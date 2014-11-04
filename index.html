@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="css/bijou.min.css">
     <style type='text/css'>
       body{
-		background:#18bc9c;
+		background:#fbfc01;
         margin-top:60px;
       }
       .birulaut{
@@ -41,26 +41,57 @@
       button{
       	margin-bottom:10px;
       }
+	  fieldset {
+border: solid 1px black;
+-webkit-border-radius: 8px;
+-moz-border-radius: 8px;
+border-radius: 8px;
+background: #6f8398;
+}
+	 legend {
+border: solid 1px black;
+-webkit-border-radius: 8px;
+-moz-border-radius: 8px;
+border-radius: 8px;
+text-align:left;
+background: #6f8398;
+color:#ffffff;
+}
     </style>
  
   </head>
   <body>
     <div class='navbar fixed birulaut'>
       <div class='container'>
-        <h4 class='pull-left'>Pratama's Personal Website</h4>
+        <h4 class='pull-left'>mpratama.github.io</h4>
         <ul class='pull-right'>
           <li><a href='#'>Writing</a></li>
-          <li><a href='#'>Books & Movies</a></li>
+          <li><a href='#'>Reading</a></li>
 		  <li><a href='#'>Publication</a></li>
-		  <li><a href='#'>Send a Message</a></li>
         </ul>
       </div>
     </div>
     <div class='container'>
       
       <div class='banner row'>
-        <div class='span twelve dark'>
-          <h4>Arif Mulpratama, S.Farm., Apt</h4>
+        <div class='span six'>
+		  <img src="img/a.png" style="width: 261px; height: 350px;">
+		  <h4>Arif Mulpratama, S.Farm., Apt</h4>
+		  Pharmacist
+        </div>
+		<div class='span five'>
+          <form action="http://getsimpleform.com/messages?form_api_token=3dfc1340787b5b1f238b6493009413d6" method="post" enctype="multipart/form-data">
+  <fieldset>
+    <legend>Send A Message</legend>
+	<input type='hidden' name='redirect_to' value='http://mpratama.github.io/' />
+<textarea cols="30" rows="1" name="email">Your email</textarea><br>
+<textarea cols="30" rows="5" name="pesan">Your message</textarea><br>
+	<button class='button primary small' type='submit'>Send Message</button>
+  </fieldset>
+</form>
+<br>
+<p align="left"><img src="img/mail.png" style="width: 16px; height: 16px;"> arifmulpratama[at]mail.ugm.ac.id<br>
+<img src="img/github.png" style="width: 16px; height: 16px;"> github.com/mpratama</p>
         </div>
       </div>
 
