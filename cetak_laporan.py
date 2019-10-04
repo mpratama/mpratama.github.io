@@ -12,5 +12,5 @@ class Command(BaseCommand):
         b = str(input("Masukkan tanggal akhir (TTTT-BB-HH): "))
         helper.datapenggunaanmentah(a, b)
         helper.datapenggunaantotal(a, b)
-        rename('data_penggunaan_mentah.csv', '../Videos/data_penggunaan_mentah_%s_sampai_%s.csv' % (a, b))
-        rename('data_penggunaan_total.csv', '../Videos/data_penggunaan_total_%s_sampai_%s.csv' % (a, b))
+        rename('data_penggunaan_mentah.csv', '../downloads/data_penggunaan_mentah_%s_sampai_%s.csv' % (a, b))
+        rename('data_penggunaan_total.csv', '../downloads/data_penggunaan_total_%s_sampai_%s.csv' % (a, b))
