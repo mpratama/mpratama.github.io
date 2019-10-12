@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Ubah Nama Banyak File Sekaligus Dengan Perintah&nbsp;rename | Yesbesoklibur.com</title>
+  <meta charset="utf-8">
+<meta name="description" content="Pendahuluan Pernah mengalami hal seperti ini: kebingungan membackup dan mengorganisir koleksi foto dari smartphone yang jumlahnya ratusan file. *Well*.. di linux terdapat satu command yang dapat memanipulasi dan juga mengorganisir banyak file sekaligus. Command tersebut yaitu rename. Dan jika kita mengakses manual page command tersebut dengan man rename: RENAME(1 …"><meta name="author" content="Pratama">  <meta name="viewport" content="initial-scale=1, maximum-scale=1" />
+  <meta http-equiv="Cache-Control" content="max-age=604800, must-revalidate" />
+  <link href="/theme/css/min-master.css" rel="stylesheet" type="text/css" />
+  <link href="/theme/css/pygment.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+
+
+    <div class="container">
+
+<header class="sticky">
+<a href="/" class="button logo"><span class="icon-terminal"></span></a>
+<a href="/reading/" class="button"><span class="icon-book"></span> Reading List</a>
+<a href="/archives/" class="button"><span class="icon-archive"></span> Archive</a>
+<a href="/about/" class="button"><span class="icon-user"></span> About</a>
+</header>
+    </div>    <div class="container">
+<h4><a href="/tulisan/ubah-nama-banyak-file-sekaligus-dengan-perintah-rename.html"><span class="icon-edit"></span> Ubah Nama Banyak File Sekaligus Dengan Perintah&nbsp;rename</a>
+<small><span class="icon-user"></span> by Pratama</i> on <a href="/category/linux.html">Linux</a></small>
+</h4>
+
+<h2>Pendahuluan</h2>
+<p align="justify">Pernah mengalami hal seperti ini: kebingungan membackup dan mengorganisir koleksi foto dari smartphone yang jumlahnya ratusan file. *Well*.. di linux terdapat satu command yang dapat memanipulasi dan juga mengorganisir banyak file sekaligus. Command tersebut yaitu <code>rename</code>. Dan jika kita mengakses manual page command tersebut dengan <code>man rename</code>:</p>
+
+<div class="highlight"><pre><span></span>RENAME(1)              Perl Programmers Reference Guide              RENAME(1)
+
+
+
+NAME
+       rename - renames multiple files
+
+SYNOPSIS
+       rename [ -v ] [ -n ] [ -f ] perlexpr [ files ]
+
+DESCRIPTION
+       &quot;rename&quot; renames the filenames supplied according to the rule specified
+       as the first argument.  The perlexpr argument is a Perl expression
+       which is expected to modify the $_ string in Perl for at least some of
+       the filenames specified.  If a given filename is not modified by the
+       expression, it will not be renamed.  If no filenames are given on the
+       command line, filenames will be read via standard input.
+
+       For example, to rename all files matching &quot;*.bak&quot; to strip the
+       extension, you might say
+
+               rename &#39;s/\.bak$//&#39; *.bak
+</pre></div>
+
+
+<p align="justify">Dari manual manual page di atas dapat diketahui bahwa command <code>rename</code> merupakan *perl script* dan dapat bekerja dengan menggunakan perlexpr. Perlexpr ini merupakan regular expression. Apakah itu regular&nbsp;expression?</p>
+
+<h2>Regular&nbsp;Expression</h2>
+<p><p align="justify"><em>Well</em>.. Regular expression merupakan bahasan yang cukup panjang dan harus dibahas secara terpisah. Intinya regular expression itu adalah mencocokkan text dengan pola (pattern) yang telah ditetapkan. Contoh kegunaan regular expression antara&nbsp;lain:</p></p>
+<ol>
+<li>Mengecek input dari user pada form jika pengisian kolom email sesuai dan valid dengan format alamat&nbsp;email.</li>
+<li>Mengesktraksi informasi yang dibutuhkan dari text. Misal mengekstraksi kode pos dari daftar&nbsp;alamat.</li>
+<li>Mengganti sebagian kata dalam text. Misal semua kata &#8220;color&#8221; dan &#8220;colour&#8221; diganti menjadi&nbsp;&#8220;red&#8221;.</li>
+<li>Membagi text yang banyak menjadi bagian-bagian kecil. Misal dibagi berdasarkan tanda titik atau&nbsp;koma.</li>
+</ol>
+<h2>Contoh Penggunaan Command&nbsp;Rename</h2>
+<blockquote>
+<p><span class="caps">WARNING</span>: Selalu gunakan option <code>-n</code> ketika menguji command <code>rename</code>. Hal ini dikarenakan ketika berhasil dieksekusi command <code>rename</code> tidak dapat di-undo, sehingga kesalahan yang terjadi sulit untuk diperbaiki. Option <code>-n</code> berfungsi untuk me-review perubahan yang akan terjadi tanpa langsung mengeksekusi. Contoh penggunaan opsi <code>-n</code></p>
+</blockquote>
+<div class="highlight"><pre><span></span>$ rename -n <span class="s2">&quot;s/.jpg</span>$<span class="s2">/.png/g&quot;</span> *jpg
+</pre></div>
+
+
+<hr>
+<p><p align="justify">Menghapus awalan &#8220;IMG_&#8221; pada semua file foto .jpg dalam active&nbsp;directory</p></p>
+<div class="highlight"><pre><span></span>$ rename -n <span class="s2">&quot;s/^IMG_//g&quot;</span> *jpg
+</pre></div>
+
+
+<hr>
+<p><p align="justify">Mengganti kata &#8220;Untitled&#8221; dengan &#8220;Catatan&#8221; pada seluruh file .txt dalam active&nbsp;directory </p></p>
+<div class="highlight"><pre><span></span>$ rename -n <span class="s2">&quot;s/Untitled/Catatan/g&quot;</span> *txt
+</pre></div>
+
+
+<hr>
+<p><p align="justify">Mengubah seluruh file berformat .html menjadi format .txt dalam active&nbsp;directory</p></p>
+<div class="highlight"><pre><span></span>$ rename -n <span class="s2">&quot;s/.html</span>$<span class="s2">/.txt/g&quot;</span> *html
+</pre></div>
+
+
+<hr>
+<p><p align="justify">Mengubah seluruh huruf besar menjadi huruf kecil pada file .mp3 dalam active&nbsp;directory</p></p>
+<div class="highlight"><pre><span></span>$ rename -n <span class="s2">&quot;y/A-Z/a-z/&quot;</span> *mp3
+</pre></div>
+
+
+<hr>
+<p><p align="justify">Mengubah spasi menjadi &#8220;_&#8221; pada semua file dalam active&nbsp;directory</p></p>
+<div class="highlight"><pre><span></span>$ rename -n <span class="s2">&quot;s/\ /_/g&quot;</span> *
+</pre></div>
+
+
+<h2>Daftar&nbsp;Pustaka</h2>
+<ul>
+<li>Lopez, Felix. <span class="amp">&amp;</span> Romero, Victor. (2014). <em>Mastering Python Regular Expressions</em>. Birmingham: Packt Publishing&nbsp;Ltd.</li>
+</ul>
+    </div>
+
+
+<footer><hr>
+    <div style="text-align: center;"><h6> &copy; Yesbesoklibur.com <small>Jeritan pekerja overworked</small></h6>
+      <h3>
+      <a href="http://github.com/mpratama"><span class="icon-github"></span></a>
+      <a href="http://instagram.com/arifmulpratama"><span class="icon-instagram"></span></a>
+
+</h3></footer></body>
+</html>
