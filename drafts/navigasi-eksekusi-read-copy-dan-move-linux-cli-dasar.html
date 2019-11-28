@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Navigasi, Eksekusi, Read, Copy, dan Move - Linux <span class="caps">CLI</span>&nbsp;Dasar | Yesbesoklibur.com</title>
+  <meta charset="utf-8">
+<meta name="description" content="Pendahuluan Pada bagian ini kita akan mempelajari dasar-dasar penggunaan command line interface (CLI) linux. CLI pada linux sering disebut dengan istilah lain diantaranya: terminal, console,shell, dll. Bagi pengguna komputer pemula yang lebih sering berinteraksi dengan tampilan grafis (GUI-graphical user interface) mungkin hanya bisa terdiam menatap monitor tanpa tahu …"><meta name="author" content="Pratama">  <meta name="viewport" content="initial-scale=1, maximum-scale=1" />
+  <meta http-equiv="Cache-Control" content="max-age=604800, must-revalidate" />
+  <link href="/theme/css/min-master.css" rel="stylesheet" type="text/css" />
+  <link href="/theme/css/pygment.min.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+
+
+    <div class="container">
+
+<header>
+<a href="/" class="button logo"><span class="icon-besoklibur"></span></a>
+<a href="/reading/" class="button"><span class="icon-book"></span> Reading List</a>
+<a href="/archives/" class="button"><span class="icon-archive"></span> Archive</a>
+<a href="/about/" class="button"><span class="icon-user"></span> About</a>
+</header>
+    </div>    <div class="container">
+<h4><a href="/drafts/navigasi-eksekusi-read-copy-dan-move-linux-cli-dasar.html"><span class="icon-edit"></span> Navigasi, Eksekusi, Read, Copy, dan Move - Linux <span class="caps">CLI</span>&nbsp;Dasar</a>
+<small><span class="icon-user"></span> by Pratama</i> on <a href="/category/linux.html">Linux</a></small>
+</h4>
+
+<h2>Pendahuluan</h2>
+<p><p align="justify">Pada bagian ini kita akan mempelajari dasar-dasar penggunaan command line interface (<span class="caps">CLI</span>) linux. <span class="caps">CLI</span> pada linux sering disebut dengan istilah lain diantaranya: terminal, console,shell, dll. Bagi pengguna komputer pemula yang lebih sering berinteraksi dengan tampilan grafis (<span class="caps">GUI</span>-graphical user interface) mungkin hanya bisa terdiam menatap monitor tanpa tahu harus berbuat apa ketika dihadapkan dengan tampilan seperti di bawah&nbsp;ini.</p></p>
+<p><img alt="cmd" src="https://s6.postimg.org/51ift8olt/cmd.png"></p>
+<p align="justify">Penggunaan <span class="caps">CLI</span> memiliki beberapa keuntungan jika dibandingkan dengan <span class="caps">GUI</span>&nbsp;diantaranya:</p>
+
+<ol>
+<li>Cepat dan efisien ; eksekusi dan navigasi sistem lebih cepat, tombol <span class="caps">TAB</span> memiliki fungsi&nbsp;autocompletion.</li>
+<li>Minim sumber daya ; selain program itu sendiri, <span class="caps">GUI</span> memerlukan lebih banyak sumber daya misalnya me-load elemen icons, fonts, images, driver,&nbsp;dll.</li>
+<li>Customisasi ; kemampuan alias, scripting, pipeline, dapat dicustomisasi sesuai&nbsp;kebutuhan.</li>
+</ol>
+<h2>Navigasi <span class="amp">&amp;</span> Eksekusi pada <span class="caps">CLI</span></h2>
+<p><p align="justify">Hal pertama yang harus dipahami dalam penggunaan <span class="caps">CLI</span> adalah navigasi, yaitu berpindah dari satu directory(folder) ke directory lainnya, hal ini sangat penting untuk proses selanjutnya yaitu mengeksekusi script/program yang letaknya di dalam folder. Sebagai contoh, pada sistem operasi Windows ketika kita klik shortcut Notepad yang berada di <code>Start &gt; All Programs &gt; Accesories</code> secara tidak langsung kita bernavigasi ke folder <code>C:\Windows\System32\</code> dan mengeksekusi program <code>notepad.exe</code>.</p></p>
+<p><img alt="cli_commands" src="https://s6.postimg.org/lb8lw4z9t/cli_commands.jpg"></p>
+<h2>Tutorial Navigasi <span class="amp">&amp;</span> Eksekusi <span class="caps">CLI</span></h2>
+<p><p align="justify">Mari berimajinasi bahwa kita ada di sebuah benteng, besar dan kokoh, sulit ditembus oleh musuh. Kita berjalan menyusuri menara-menara benteng yang menjulang tinggi ke langit, menyusuri taman benteng yang ditumbuhi bunga berwarna-warni. Sampai akhirnya kita menjelajahi lorong bawah tanah benteng yang pengap, lembap, dan&nbsp;gelap.</p></p>
+<p><img alt="dungeon_dir" src="https://s6.postimg.org/6ulchk9sh/dungeon_directory.png"></p>
+<ul>
+<li>Buka terminal emulator / console dan ketik perintah&nbsp;berikut:</li>
+</ul>
+<div class="highlight"><pre><span></span>$ git clone https://github.com/mpratama/clitut.git
+</pre></div>
+
+
+<blockquote>
+<p>Ketika membuka terminal emulator secara default kita berada di directory /home/{username}/ ditandai dengan tanda <code>~</code>. Tanda dollar <code>$</code> tidak perlu diketik, tanda dollar menandakan kita mengakses terminal dengan hak akses user&nbsp;biasa.</p>
+</blockquote>
+<ul>
+<li>Ketik <code>cd clitut</code> untuk masuk ke directory clitut, lalu ketik <code>ls</code> untuk menampilkan isi directory dimana kita sedang berada. Pada terminal akan tampil output sebagai&nbsp;berikut:</li>
+</ul>
+<div class="highlight"><pre><span></span>$ ls
+lorong_bawah_tanah README.md
+</pre></div>
+
+
+<blockquote>
+<p>Tips: gunakan tombol keyboard <code>TAB</code> untuk menggunakan fitur autocompletion yang sangat membantu. <code>cd</code> berarti change directory sedangkan <code>ls</code> berarti list directory&nbsp;contents.</p>
+</blockquote>
+<ul>
+<li>Mari melangkah lebih dalam, masuk ke lorong_bawah_tanah.
+<code>cd lorong_bawah_tanah </code></li>
+<li>Untuk mengetahui isi lorong_bawah_tanah selain dengan <code>cd</code> bisa dengan <code>tree</code> untuk mengetahui isi yang lebih&nbsp;detail.</li>
+</ul>
+<div class="highlight"><pre><span></span>$ tree
+.
+.
+├── gudang
+│   ├── gudang_makanan
+│   │   └── persediaan_makanan.txt
+│   └── gudang_senjata
+│       ├── anjing_penjaga.pl
+│       └── persediaan_senjata.txt
+├── ruang_penjaga
+│   ├── buka_gerbang.sh
+│   ├── lampu.py
+│   └── tutup_gerbang.sh
+└── sel_tahanan
+    ├── sel_1
+    │   └── tahanan_1
+    ├── sel_2
+    │   └── tahanan_2
+    ├── sel_3
+    │   └── tahanan_3
+    └── sel_4
+        └── tahanan_4
+.
+<span class="m">9</span> directories, <span class="m">10</span> files
+</pre></div>
+
+
+<blockquote>
+<p>Perintah <code>tree</code> berfungsi memetakan seluruh isi directory termasuk seluruh isi subdirectory didalamnya. Perlu perhatian pada penggunaan perintah <code>tree</code> terutama pada directory yang berisi banyak subdirectory dan&nbsp;file.</p>
+</blockquote>
+<ul>
+<li>Masuk ke ruang_penjaga <code>cd ruang_penjaga</code>. Berinteraksi dengan lampu menggunakan <code>python lampu.py</code>. Untuk membuka gerbang gunakan <code>sh buka_gerbang.sh</code></li>
+</ul>
+<div class="highlight"><pre><span></span>$ python lampu.py
+Nyalakan lampu<span class="o">(</span>y/n<span class="o">)</span>: y
+Lampu menyala.
+Ruangan menjadi terang.
+$ sh buka_gerbang.sh
+Gerbang terbuka.
+</pre></div>
+
+
+<blockquote>
+<p>File lampu.py, buka_gerbang.sh, dan tutup_gerbang.sh dalam directory ruang_penjaga merupakan script atau program. Script berakhiran py merupakan python script dan bisa dieksekusi menggunakan perintah <code>python</code> sedangkan script berakhiran sh merupakan shell script dan dieksekusi menggunakan perintah <code>sh</code>. Berbeda jenis script berbeda juga cara mengeksekusinya, misal: .js = javacript, .rb = ruby, .jar = java archive, .lua = lua, .pl = perl, .exe = executable,&nbsp;dll.</p>
+</blockquote>
+<ul>
+<li>Kembali ke lorong_bawah_tanah dengan <code>cd ..</code>. Gunakan <code>pwd</code> untuk mengetahui posisi sekarang. Masuk ke ruang sel_tahanan dan masuk ke sel_1 <code>cd sel_tahanan/sel_1</code></li>
+</ul>
+<div class="highlight"><pre><span></span>$ <span class="nb">cd</span> ..
+$ <span class="nb">pwd</span>
+/home/username/clitut/lorong_bawah_tanah
+$ <span class="nb">cd</span> sel_tahanan/sel_1
+$ ls
+tahanan_1
+</pre></div>
+
+
+<blockquote>
+<p>Tanda titik 2 <code>..</code> berarti naik satu tingkat ke directory sebelumnya. <code>pwd</code> berfungsi untuk print name of current/working&nbsp;directory.</p>
+</blockquote>
+<h2>Read, Copy dan Move&nbsp;File</h2>
+<ul>
+<li>Dari ruang sel_1 loncat ke gudang_makanan <code>cd ../../gudang/gudang_makanan/</code>. Untuk mengetahui persediaan makanan baca file teks dengan <code>cat persediaan_makanan.txt</code>. Untuk menyalin catatan persediaan makanan dan menyimpannya di ruang penjaga gunakan <code>cp persediaan_makanan.txt ../../ruang_penjaga/</code></li>
+</ul>
+<div class="highlight"><pre><span></span>$ <span class="nb">cd</span> ../../gudang/gudang_makanan/
+$ cat persediaan_makanan.txt
+beras   : <span class="m">200</span> kilo
+daging  : <span class="m">450</span> kilo
+cabai   : <span class="m">300</span> kilo
+susu    : <span class="m">500</span> liter
+gandum  : <span class="m">250</span> kilo
+$ cp persediaan_makanan.txt ../../ruang_penjaga/
+</pre></div>
+
+
+<blockquote>
+<p>Perintah <code>cat</code> berfungsi membaca isi textfile/script dan menampilkannya pada output. <code>cp</code> berfungsi membuat salinan satu atau beberapa file, format penggunaannya yaitu <code>cp file1 file2 file3 filedst target_penyimpanan/</code></p>
+</blockquote>
+<ul>
+<li>Dari gudang_makanan pindah ke gudang_senjata <code>cd ../gudang_senjata/</code>. Berinteraksi dengan anjing_penjaga dengan <code>perl anjing_penjaga.pl</code>.Baca catatan persediaan_senjata <code>cat persediaan_senjata.txt</code> lalu salin ke ruang_penjaga <code>cp persediaan_senjata.txt ../../ruang_penjaga/</code>. Pindahkan anjing_penjaga ke sel_tahanan <code>mv anjing_penjaga.pl ../../sel_tahanan/</code>.</li>
+</ul>
+<div class="highlight"><pre><span></span>$ <span class="nb">cd</span> ../gudang_senjata/
+$ perl anjing_penjaga.pl
+Woof.. woof..
+$ cat persediaan_senjata.txt
+pedang  : <span class="m">100</span>
+tombak  : <span class="m">100</span>
+busur   : <span class="m">100</span>
+panah   : <span class="m">100000</span>
+peledak : <span class="m">75</span>
+$ cp persediaan_senjata.txt ../../ruang/penjaga/
+$ mv anjing_penjaga.pl ../../sel_tahanan/
+</pre></div>
+
+
+<blockquote>
+<p>File berakhiran pl merupakan perl script. Sebelumnya sudah dijelaskan bahwa berbeda script maka berbeda juga cara mengeksekusinya. Untuk perl script dapat dijalankan dengan perintah <code>perl</code>. Perintah <code>mv</code> memiliki fungsi untuk moving files, selain itu juga berfungsi untuk mengubah nama file misal <code>mv anjing_penjaga.pl nymeria.pl</code></p>
+</blockquote>
+<h2>Penutup</h2>
+<p><p align="justify">Di atas adalah contoh-contoh penggunaan <span class="caps">CLI</span> pada sistem Linux. Contoh yang dijelaskan di atas hanya berupa dasar-dasar, masih banyak perintah, teknik, dan juga customisasi lainnya. Praktik sendiri, eksplore, cari literatur yang banyak. Karena dengan menguasai <span class="caps">CLI</span> akan meningkatkan efektifitas dan menambah skill programming, selain itu juga terlihat keren ketika orang lain melihat kita mengutak-atik komputer melalui <span class="caps">CLI</span>. Oh iya.. satu tips yang cukup penting.. jangan lupa gunakan tombol keyboard <code>TAB</code> untuk&nbsp;membantu.</p></p>
+<h2>Daftar&nbsp;Pustaka</h2>
+<ul>
+<li>Shotts, William E. (2012). <em>The Linux Command Line: A Complete Introduction</em>. San Francisco: No Starch Press,&nbsp;Inc.</li>
+<li>Ilustrasi dibuat menggunakan Roguepack tilesets dari <a href="http://kenney.nl/">Kenney</a>.</li>
+</ul>
+    </div>
+
+
+<footer><hr>
+    <div style="text-align: center;"><h6> &copy; Yesbesoklibur.com <small>overloaded, overworked.</small></h6>
+      <h3>
+      <a href="http://github.com/mpratama"><span class="icon-github"></span></a>
+      <a href="http://instagram.com/arifmulpratama"><span class="icon-instagram"></span></a>
+
+</h3></footer></body>
+</html>
